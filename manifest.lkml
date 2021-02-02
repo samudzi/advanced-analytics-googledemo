@@ -1,4 +1,4 @@
-project_name: "advanced-analytics-accelerator"
+#project_name: "advanced-analytics-accelerator"
 
 # # Use local_dependency: To enable referencing of another project
 # # on this instance with include: statements
