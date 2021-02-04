@@ -5,7 +5,7 @@ view: +user_order_facts {
 
   dimension: is_active_customer {
     type: yesno
-    sql: ${latest_order_date} >= DATE_ADD(CURRENT_DATE, INTERVAL -30 DAY) ;;
+    sql: ${latest_order_date} >= DATE_ADD(${order_items.created_date}, INTERVAL -30 DAY) ;;
   }
 
 
