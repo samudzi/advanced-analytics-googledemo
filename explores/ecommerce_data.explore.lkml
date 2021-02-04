@@ -1,9 +1,9 @@
 include: "/views/ecommerce_dataset/*.view"
 
-explore: aaa_analytics {
+explore: order_items {
   group_label: "Advanced Analytics Accelerator"
   label: "e-commerce data"
-  view_name: order_items
+
 
   join: order_facts {
     type: left_outer

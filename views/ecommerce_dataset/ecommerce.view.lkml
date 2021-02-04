@@ -1,17 +1,18 @@
-include: "//thelook_event/views/*"
+include: "thelook_event.view"
 
 
 view: +user_order_facts {
+  #extends: [user_order_facts]
 
   dimension: is_active_customer {
     type: yesno
-    sql: ${latest_order_date} >= DATE_ADD(${order_items.created_date}, INTERVAL -30 DAY) ;;
+    sql: ${latest_order_date} >= DATE_ADD(CURRENT_DATE, INTERVAL -30 DAY) ;;
   }
 
 
   measure: active_user_count {
     type: count_distinct
-    filters: [lifetime_orders: "< 2", first_order_date: "before 30 days ago"]
+    filters: [is_active_customer: "yes"]
     sql: ${user_id} ;;
   }
 
@@ -25,7 +26,6 @@ view: +user_order_facts {
     sql:  ${total_users} - ${active_user_count};;
   }
 
-  dimension: is_active_customer {}
 
 
 }
