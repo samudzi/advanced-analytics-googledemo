@@ -1,6 +1,7 @@
-connection: "looker-private-demo"
+## define connections
+include: "/env/connections"
 
-
+# define accessible explores
 include: "/explores/ecommerce_data.explore"
 include: "/explores/cdnow.explore"
 
