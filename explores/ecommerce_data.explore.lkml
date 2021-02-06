@@ -2,7 +2,7 @@ include: "/views/ecommerce_dataset/*.view"
 
 explore: order_items {
   group_label: "Advanced Analytics Accelerator"
-  label: "e-commerce data"
+  label: "GA e-Commerce data"
 
 
   join: order_facts {

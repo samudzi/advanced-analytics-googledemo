@@ -2,6 +2,7 @@ connection: "looker-private-demo"
 
 
 include: "/explores/ecommerce_data.explore"
+include: "/explores/cdnow.explore"
 
 ############ Model Configuration #############
 
