@@ -79,5 +79,32 @@ view: cdnow_clusters {
     sql: ${monetary} ;;
   }
 
+  measure: median_frequency {
+    type: median
+    sql: monetary ;;
+  }
+
+  measure: minimum_frequency {
+    type: min
+    sql: ${frequency} ;;
+  }
+
+  measure: maximum_frequency {
+    type: max
+    sql: ${frequency} ;;
+  }
+
+  measure: frequency_25_percentile {
+    type: percentile
+    percentile: 25
+    sql: ${frequency} ;;
+  }
+
+  measure: frequency_75_percentile {
+    type: percentile
+    percentile: 75
+    sql: ${frequency} ;;
+  }
+
 
 }
