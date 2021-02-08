@@ -76,4 +76,16 @@ view: cdnow_clvpred {
     type: count
     drill_fields: []
   }
+
+  ### Added measures
+
+  measure: average_predicted_clv {
+    type: average
+    sql: ${predicted_clv} ;;
+  }
+
+  measure: average_sum_future_transactions {
+    type: average
+    sql: ${predicted_fut_transactions} ;;
+  }
 }
