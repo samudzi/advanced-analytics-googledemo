@@ -54,7 +54,7 @@ view: cdnow_clusters {
 
   measure: median_monetary {
     type: median
-    sql: monetary ;;
+    sql: ${monetary} ;;
   }
 
   measure: minimum_monetary {
@@ -104,6 +104,33 @@ view: cdnow_clusters {
     type: percentile
     percentile: 75
     sql: ${frequency} ;;
+  }
+
+  measure: median_recency {
+    type: median
+    sql: ${recency} ;;
+  }
+
+  measure: minimum_recency {
+    type: min
+    sql: ${recency} ;;
+  }
+
+  measure: maximum_recency {
+    type: max
+    sql: ${recency} ;;
+  }
+
+  measure: recency_25_percentile {
+    type: percentile
+    percentile: 25
+    sql: ${recency} ;;
+  }
+
+  measure: recency_75_percentile {
+    type: percentile
+    percentile: 75
+    sql: ${recency} ;;
   }
 
 
