@@ -1,5 +1,5 @@
-view: cdnow_clusters {
-  sql_table_name: `advanced-analytics-accelerator.GMP_demo.cdnow_clusters`
+view: ga_clusters {
+  sql_table_name: `advanced-analytics-accelerator.GMP_demo.ga_clusters`
     ;;
 
 
@@ -138,6 +138,5 @@ view: cdnow_clusters {
     percentile: 75
     sql: ${recency} ;;
   }
-
 
 }
