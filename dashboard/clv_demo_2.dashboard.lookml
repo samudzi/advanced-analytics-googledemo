@@ -1,5 +1,5 @@
 - dashboard: customer_lifetime_value_demo_GA
-  title: Customer Lifetime Value Demo
+  title: Customer Lifetime Value Demo - GA data
   layout: newspaper
   preferred_viewer: dashboards-next
   elements:
