@@ -5,6 +5,9 @@ include: "/env/connections"
 include: "/explores/ecommerce_data.explore"
 include: "/explores/cdnow.explore"
 
+#include relevant dashboards
+include: "/dashboard/clv_demo_1.dashboard"
+
 ############ Model Configuration #############
 
 datagroup: ecommerce_etl {
