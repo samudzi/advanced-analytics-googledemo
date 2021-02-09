@@ -116,11 +116,12 @@
       3. Monetary Value: How much money a customer spends on purchases
 
       RFM analysis numerically ranks a customer in each of these three categories, generally on a scale of 1 to 5 (the higher the number, the better the result). The "best" customer would receive a top score in every category.
-      Links to AI notebooks here: https://20cf9b43906e2261-dot-us-west1.notebooks.googleusercontent.com/lab?authuser=0
+
+      Links to AI notebooks here: <a href>https://20cf9b43906e2261-dot-us-west1.notebooks.googleusercontent.com/lab?authuser=0</a>
     row: 0
     col: 0
     width: 24
-    height: 4
+    height: 6
   - title: Predicted CLV by Cluster
     name: Predicted CLV by Cluster
     model: advanced_analytics_accelerator
