@@ -4,9 +4,11 @@ include: "/env/connections"
 # define accessible explores
 include: "/explores/ecommerce_data.explore"
 include: "/explores/cdnow.explore"
+include: "/explores/ga.explore"
 
 #include relevant dashboards
 include: "/dashboard/clv_demo_1.dashboard"
+include: "/dashboard/clv_demo_2.dashboard"
 
 ############ Model Configuration #############
 
