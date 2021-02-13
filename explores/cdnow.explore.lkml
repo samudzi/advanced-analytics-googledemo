@@ -8,7 +8,10 @@ explore: cdnow {
 explore: cdnow_clusters {
   view_label: "Advanced Analytics Accelerator"
   label: "CDNow predictions"
-  sql_always_where: ${cdnow.transaction_date} >= 'last 31 days' ;;
+  always_filter: {
+    filters: [cdnow.transaction_date: "last 31 days"]
+  }
+
 
 
   join: cdnow_clvpred {
