@@ -53,4 +53,9 @@ view: cdnow {
     type: sum
     sql: ${sales} ;;
   }
+
+  measure: average_sales {
+    type: average
+    sql: ${sales} ;;
+  }
 }

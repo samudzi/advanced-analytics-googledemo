@@ -5,24 +5,14 @@ explore: cdnow {
   label: "CDNow transactions"
 }
 
-explore: cdnow_clusters {
+explore: cdnow_clvpred {
   view_label: "Advanced Analytics Accelerator"
   label: "CDNow predictions"
-  always_filter: {
-    filters: [cdnow.transaction_date: "last 31 days"]
-  }
 
-
-
-  join: cdnow_clvpred {
-    relationship: one_to_one
-    type: inner
-    sql_on: ${cdnow_clusters.id} = ${cdnow_clvpred.id} ;;
-  }
 
   join: cdnow {
     relationship: one_to_one
-    type: left_outer
+    type: full_outer
     sql_on: ${cdnow.id} = ${cdnow_clvpred.id} ;;
 
   }
