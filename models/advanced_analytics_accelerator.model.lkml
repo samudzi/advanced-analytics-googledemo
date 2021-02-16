@@ -5,6 +5,7 @@ include: "/env/connections"
 include: "/explores/ecommerce_data.explore"
 include: "/explores/cdnow.explore"
 include: "/explores/ga.explore"
+include: "/explores/bqml_examples.explore"
 
 #include relevant dashboards
 include: "/dashboard/clv_demo_1.dashboard"
