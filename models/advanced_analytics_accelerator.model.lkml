@@ -1,5 +1,6 @@
 ## define connections
 include: "/env/connections"
+include: "/env/datagroups"
 
 # define accessible explores
 include: "/explores/ecommerce_data.explore"
@@ -21,3 +22,5 @@ datagroup: ecommerce_etl {
 persist_with: ecommerce_etl
 
 ############ Base Explores #############
+
+include: "/bqml/k_means_cluster/k_means_training_data.view"

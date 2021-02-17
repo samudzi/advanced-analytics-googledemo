@@ -451,7 +451,7 @@ view: order_items {
 
 
   view: users {
-    sql_table_name: looker-private-demo.ecomm.users ;;
+    sql_table_name: `looker-private-demo.ecomm.users` ;;
 
     ## Demographics ##
 
@@ -1001,7 +1001,7 @@ view: order_items {
               , CAST(MAX(created_at)  AS TIMESTAMP)  AS latest_order
               , COUNT(DISTINCT FORMAT_TIMESTAMP('%Y%m', created_at))  AS number_of_distinct_months_with_orders
               --, FIRST_VALUE(CONCAT(uniform(2, 9, random(1)),uniform(0, 9, random(2)),uniform(0, 9, random(3)),'-',uniform(0, 9, random(4)),uniform(0, 9, random(5)),uniform(0, 9, random(6)),'-',uniform(0, 9, random(7)),uniform(0, 9, random(8)),uniform(0, 9, random(9)),uniform(0, 9, random(10)))) OVER (PARTITION BY user_id ORDER BY user_id) AS phone_number
-            FROM looker-private-demo.ecomm.order_items
+            FROM `looker-private-demo.ecomm.order_items`
             GROUP BY user_id
           ;;
       datagroup_trigger: ecommerce_etl
@@ -1030,7 +1030,7 @@ view: order_items {
 
     dimension_group: latest_order {
       type: time
-      timeframes: [date, week, month, year]
+      timeframes: [raw, date, week, month, year]
       sql: ${TABLE}.latest_order ;;
     }
 
@@ -1098,6 +1098,11 @@ view: order_items {
       type: average
       value_format_name: usd
       sql: ${lifetime_revenue} ;;
+    }
+
+    measure: average_latest_order_date {
+      type: date
+      sql: timestamp_seconds(CAST(avg(unix_seconds(${latest_order_raw})) AS INT64)) ;;
     }
   }
 
