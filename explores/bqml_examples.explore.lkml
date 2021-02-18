@@ -6,6 +6,7 @@ explore: bqml_order_items {
   extends: [order_items]
   view_name: order_items
   label: "Looker + BQML Examples"
+  description: "Use this Explore to build a BQML K-means Clustering model for customer segmentation analysis"
 
   join: customer_segmentation_create {
     sql_on: 1=1 ;;
