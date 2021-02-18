@@ -15,9 +15,9 @@ view: customer_segmentation_results {
     sql: ${TABLE}.CENTROID_ID ;;
   }
 
-  dimension: nearest_centroids_distance {
-    label: "Nearest Segment Distance"
-    type: string
-    sql: ${TABLE}.NEAREST_CENTROIDS_DISTANCE ;;
-  }
+  # dimension: nearest_centroids_distance {
+  #   label: "Nearest Segment Distance"
+  #   type: string
+  #   sql: ${TABLE}.NEAREST_CENTROIDS_DISTANCE ;;
+  # }
 }
