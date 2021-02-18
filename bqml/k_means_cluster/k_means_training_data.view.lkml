@@ -1,25 +1,31 @@
 view: k_means_training_data {
   derived_table: {
-    # sql:  SELECT
-    #         users.id  AS users_id,
-    #         COUNT(DISTINCT order_items.order_id ) AS order_items_order_count,
-    #         COALESCE(SUM(order_items.sale_price ), 0) AS order_items_total_sale_price,
-    #         AVG(order_items.sale_price ) AS order_items_average_sale_price
-    #       FROM `looker-private-demo.ecomm.order_items`  AS order_items
-    #       LEFT JOIN `looker-private-demo.ecomm.users`  AS users ON order_items.user_id = users.id
-    #       GROUP BY 1
-    # ;;
-    sql:  SELECT
-            users.id  AS users_id,
-            {% parameter user_attribute_1 %},
-            {% parameter user_attribute_2 %},
-            {% parameter user_attribute_3 %},
-            {% parameter user_attribute_4 %},
-            {% parameter user_attribute_5 %}
 
-          FROM ${users.SQL_TABLE_NAME}  AS users
-          LEFT JOIN ${user_order_facts.SQL_TABLE_NAME} AS user_order_facts
-            ON users.id = user_order_facts.user_id
+    sql:  SELECT
+            users.id  AS user_id,
+            {% if user_attribute_1._parameter_value == 'select_attribute' %}
+            {% else %}
+              {% parameter user_attribute_1 %},
+            {% endif %}
+            {% if user_attribute_2._parameter_value == 'select_attribute' %}
+            {% else %}
+              {% parameter user_attribute_2 %},
+            {% endif %}
+            {% if user_attribute_3._parameter_value == 'select_attribute' %}
+            {% else %}
+              {% parameter user_attribute_3 %},
+            {% endif %}
+            {% if user_attribute_4._parameter_value == 'select_attribute' %}
+            {% else %}
+              {% parameter user_attribute_4 %},
+            {% endif %}
+            {% if user_attribute_4._parameter_value == 'select_attribute' %}
+            {% else %}
+              {% parameter user_attribute_5 %}
+            {% endif %}
+        FROM ${users.SQL_TABLE_NAME}  AS users
+        LEFT JOIN ${user_order_facts.SQL_TABLE_NAME} AS user_order_facts
+        ON users.id = user_order_facts.user_id
     ;;
   }
 
@@ -28,12 +34,25 @@ view: k_means_training_data {
     hidden: yes
   }
 
-  parameter: user_attribute_1 {
+  parameter: model_name {
+    label: "Name your Segmentation model"
+    description: "Enter a unique name for your BQML model"
     type: unquoted
-    default_value: "NULL"
+  }
+
+  parameter: number_of_clusters {
+    label: "Select Number of Segments"
+    description: "Enter the number of segments you want to create"
+    type: unquoted
+  }
+
+  parameter: user_attribute_1 {
+    description: "Select an attribute to define your segments"
+    type: unquoted
+    default_value: "select_attribute"
     allowed_value: {
       label: "Select Attribute"
-      value: "NULL"
+      value: "select_attribute"
     }
     allowed_value: {
       label: "Age"
@@ -49,7 +68,7 @@ view: k_means_training_data {
     }
     allowed_value: {
       label: "Created Date"
-      value: "users.created_date"
+      value: "users.created"
     }
     allowed_value: {
       label: "Days as Customer"
@@ -65,7 +84,7 @@ view: k_means_training_data {
     }
     allowed_value: {
       label: "First Order Date"
-      value: "user_order_facts.first_order_date"
+      value: "user_order_facts.first_order"
     }
     allowed_value: {
       label: "Gender"
@@ -77,7 +96,7 @@ view: k_means_training_data {
     }
     allowed_value: {
       label: "Latest Order Date"
-      value: "user_order_facts.latest_order_date"
+      value: "user_order_facts.latest_order"
     }
     allowed_value: {
       label: "Lifetime Orders"
@@ -114,11 +133,12 @@ view: k_means_training_data {
   }
 
   parameter: user_attribute_2 {
+    description: "Select an attribute to define your segments"
     type: unquoted
-    default_value: "NULL"
+    default_value: "select_attribute"
     allowed_value: {
       label: "Select Attribute"
-      value: "NULL"
+      value: "select_attribute"
     }
     allowed_value: {
       label: "Age"
@@ -134,7 +154,7 @@ view: k_means_training_data {
     }
     allowed_value: {
       label: "Created Date"
-      value: "users.created_date"
+      value: "users.created"
     }
     allowed_value: {
       label: "Days as Customer"
@@ -150,7 +170,7 @@ view: k_means_training_data {
     }
     allowed_value: {
       label: "First Order Date"
-      value: "user_order_facts.first_order_date"
+      value: "user_order_facts.first_order"
     }
     allowed_value: {
       label: "Gender"
@@ -162,7 +182,7 @@ view: k_means_training_data {
     }
     allowed_value: {
       label: "Latest Order Date"
-      value: "user_order_facts.latest_order_date"
+      value: "user_order_facts.latest_order"
     }
     allowed_value: {
       label: "Lifetime Orders"
@@ -199,11 +219,12 @@ view: k_means_training_data {
   }
 
   parameter: user_attribute_3 {
+    description: "Select an attribute to define your segments"
     type: unquoted
-    default_value: "NULL"
+    default_value: "select_attribute"
     allowed_value: {
       label: "Select Attribute"
-      value: "NULL"
+      value: "select_attribute"
     }
     allowed_value: {
       label: "Age"
@@ -219,7 +240,7 @@ view: k_means_training_data {
     }
     allowed_value: {
       label: "Created Date"
-      value: "users.created_date"
+      value: "users.created"
     }
     allowed_value: {
       label: "Days as Customer"
@@ -235,7 +256,7 @@ view: k_means_training_data {
     }
     allowed_value: {
       label: "First Order Date"
-      value: "user_order_facts.first_order_date"
+      value: "user_order_facts.first_order"
     }
     allowed_value: {
       label: "Gender"
@@ -247,7 +268,7 @@ view: k_means_training_data {
     }
     allowed_value: {
       label: "Latest Order Date"
-      value: "user_order_facts.latest_order_date"
+      value: "user_order_facts.latest_order"
     }
     allowed_value: {
       label: "Lifetime Orders"
@@ -284,11 +305,12 @@ view: k_means_training_data {
   }
 
   parameter: user_attribute_4 {
+    description: "Select an attribute to define your segments"
     type: unquoted
-    default_value: "NULL"
+    default_value: "select_attribute"
     allowed_value: {
       label: "Select Attribute"
-      value: "NULL"
+      value: "select_attribute"
     }
     allowed_value: {
       label: "Age"
@@ -304,7 +326,7 @@ view: k_means_training_data {
     }
     allowed_value: {
       label: "Created Date"
-      value: "users.created_date"
+      value: "users.created"
     }
     allowed_value: {
       label: "Days as Customer"
@@ -320,7 +342,7 @@ view: k_means_training_data {
     }
     allowed_value: {
       label: "First Order Date"
-      value: "user_order_facts.first_order_date"
+      value: "user_order_facts.first_order"
     }
     allowed_value: {
       label: "Gender"
@@ -332,7 +354,7 @@ view: k_means_training_data {
     }
     allowed_value: {
       label: "Latest Order Date"
-      value: "user_order_facts.latest_order_date"
+      value: "user_order_facts.latest_order"
     }
     allowed_value: {
       label: "Lifetime Orders"
@@ -369,11 +391,12 @@ view: k_means_training_data {
   }
 
   parameter: user_attribute_5 {
+    description: "Select an attribute to define your segments"
     type: unquoted
-    default_value: "NULL"
+    default_value: "select_attribute"
     allowed_value: {
       label: "Select Attribute"
-      value: "NULL"
+      value: "select_attribute"
     }
     allowed_value: {
       label: "Age"
@@ -389,7 +412,7 @@ view: k_means_training_data {
     }
     allowed_value: {
       label: "Created Date"
-      value: "users.created_date"
+      value: "users.created"
     }
     allowed_value: {
       label: "Days as Customer"
@@ -405,7 +428,7 @@ view: k_means_training_data {
     }
     allowed_value: {
       label: "First Order Date"
-      value: "user_order_facts.first_order_date"
+      value: "user_order_facts.first_order"
     }
     allowed_value: {
       label: "Gender"
@@ -417,7 +440,7 @@ view: k_means_training_data {
     }
     allowed_value: {
       label: "Latest Order Date"
-      value: "user_order_facts.latest_order_date"
+      value: "user_order_facts.latest_order"
     }
     allowed_value: {
       label: "Lifetime Orders"

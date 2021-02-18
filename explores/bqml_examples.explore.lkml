@@ -7,26 +7,14 @@ explore: bqml_order_items {
   view_name: order_items
   label: "Looker + BQML Examples"
 
-  join: customer_segmentation {
-    type: left_outer
-    sql_on: ${users.id} = ${customer_segmentation.user_id} ;;
+  join: customer_segmentation_create {
+    sql_on: 1=1 ;;
     relationship: one_to_one
   }
 
-  # join: k_means_training_data {
-  #   type: left_outer
-  #   sql_on: ${users.id} = ${k_means_training_data.user_id} ;;
-  #   relationship: one_to_one
-  # }
-
-  # join: k_means_create {
-  #   type: cross
-  #   relationship: one_to_one
-  # }
-
-  # join: k_means_predictions {
-  #   type: left_outer
-  #   sql_on: ${users.id} = ${k_means_predictions.users_id} ;;
-  #   relationship: one_to_one
-  # }
+  join: customer_segmentation_results {
+    type: left_outer
+    sql_on: ${users.id} = ${customer_segmentation_results.user_id} ;;
+    relationship: one_to_one
+  }
 }

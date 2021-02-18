@@ -1,7 +1,7 @@
 view: k_means_predictions {
   derived_table: {
     sql:  SELECT *
-          FROM ml.PREDICT(MODEL looker_pdts.user_segmentation,
+          FROM ml.PREDICT(MODEL looker_pdts.{% parameter k_means_training_data.model_name %},
               (SELECT
                 *
               FROM ${k_means_training_data.SQL_TABLE_NAME}
@@ -12,6 +12,7 @@ view: k_means_predictions {
 
   dimension: users_id {
     primary_key: yes
+    hidden: yes
     type: number
     sql: ${TABLE}.users_id ;;
   }
