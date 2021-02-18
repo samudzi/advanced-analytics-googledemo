@@ -75,19 +75,19 @@ view: customer_segmentation_create {
   }
 
   parameter: model_name {
-    label: "Name your Segmentation model"
-    description: "Enter a unique name for your BQML model"
+    label: "Name your Segmentation Model"
+    description: "Enter a unique name for your BQML k-means clustering model"
     type: unquoted
   }
 
   parameter: number_of_clusters {
     label: "Select Number of Segments"
-    description: "Enter the number of segments you want to create"
+    description: "Enter the number of clusters you want the BQML k-means model to create"
     type: unquoted
   }
 
   parameter: user_attribute_1 {
-    description: "Select an attribute to define your segments"
+    description: "Select a field to include in your BQML k-means model training data"
     type: unquoted
     default_value: "select_attribute"
     allowed_value: {
@@ -149,7 +149,7 @@ view: customer_segmentation_create {
   }
 
   parameter: user_attribute_2 {
-      description: "Select an attribute to define your segments"
+    description: "Select a field to include in your BQML k-means model training data"
     type: unquoted
     default_value: "select_attribute"
     allowed_value: {
@@ -211,7 +211,7 @@ view: customer_segmentation_create {
   }
 
   parameter: user_attribute_3 {
-    description: "Select an attribute to define your segments"
+    description: "Select a field to include in your BQML k-means model training data"
     type: unquoted
     default_value: "select_attribute"
     allowed_value: {
@@ -273,7 +273,7 @@ view: customer_segmentation_create {
   }
 
   parameter: user_attribute_4 {
-  description: "Select an attribute to define your segments"
+    description: "Select a field to include in your BQML k-means model training data"
     type: unquoted
     default_value: "select_attribute"
     allowed_value: {
@@ -335,7 +335,7 @@ view: customer_segmentation_create {
   }
 
   parameter: user_attribute_5 {
-    description: "Select an attribute to define your segments"
+    description: "Select a field to include in your BQML k-means model training data"
     type: unquoted
     default_value: "select_attribute"
     allowed_value: {
