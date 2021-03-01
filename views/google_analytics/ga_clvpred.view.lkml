@@ -112,6 +112,16 @@ measure: count {
 
 ### Added measures
 
+  measure: clv_variance {
+    sql:(${average_predicted_clv} - ${order_items.total_sale_price}) / ${order_items.total_sale_price};;
+    type: number
+  }
+
+  measure: freq_variance {
+    sql:(${order_items.count}-${predicted_fut_transactions}) / ${order_items.count};;
+    type: number
+  }
+
 measure: average_predicted_clv {
   type: average
   sql: ${predicted_clv} ;;

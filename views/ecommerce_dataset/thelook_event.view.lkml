@@ -43,16 +43,16 @@ view: order_items {
     sql: ${order_id} ;;
   }
 
-  measure: first_purchase_count {
-    view_label: "Orders"
-    type: count_distinct
-    sql: ${order_id} ;;
-    filters: {
-      field: order_facts.is_first_purchase
-      value: "Yes"
-    }
-    drill_fields: [user_id, users.name, users.email, order_id, created_date, users.traffic_source]
-  }
+  # measure: first_purchase_count {
+  #   view_label: "Orders"
+  #   type: count_distinct
+  #   sql: ${order_id} ;;
+  #   filters: {
+  #     field: order_facts.is_first_purchase
+  #     value: "Yes"
+  #   }
+  #   drill_fields: [user_id, users.name, users.email, order_id, created_date, users.traffic_source]
+  # }
 
   dimension: order_id_no_actions {
     type: number
@@ -196,11 +196,11 @@ view: order_items {
     sql: TIMESTAMP_DIFF(${created_raw},CURRENT_TIMESTAMP(), DAY) ;;
   }
 
-  dimension: months_since_signup {
-    view_label: "Orders"
-    type: number
-    sql: CAST(FLOOR(TIMESTAMP_DIFF(${created_raw}, ${users.created_raw}, DAY)/30) AS INT64) ;;
-  }
+  # dimension: months_since_signup {
+  #   view_label: "Orders"
+  #   type: number
+  #   sql: CAST(FLOOR(TIMESTAMP_DIFF(${created_raw}, ${users.created_raw}, DAY)/30) AS INT64) ;;
+  # }
 
 ########## Logistics ##########
 
@@ -304,12 +304,12 @@ view: order_items {
     sql: 1.0 * ${total_gross_margin}/ nullif(${total_sale_price},0) ;;
   }
 
-  measure: average_spend_per_user {
-    type: number
-    value_format_name: usd
-    sql: 1.0 * ${total_sale_price} / nullif(${users.count},0) ;;
-    drill_fields: [detail*]
-  }
+  # measure: average_spend_per_user {
+  #   type: number
+  #   value_format_name: usd
+  #   sql: 1.0 * ${total_sale_price} / nullif(${users.count},0) ;;
+  #   drill_fields: [detail*]
+  # }
 
 ########## Return Information ##########
 
