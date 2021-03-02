@@ -9,8 +9,8 @@ include: "/explores/ga.explore"
 include: "/explores/bqml_examples.explore"
 
 #include relevant dashboards
-include: "/dashboard/clv_demo_1.dashboard"
-include: "/dashboard/clv_demo_2.dashboard"
+include: "/dashboards/clv_demo_1.dashboard"
+include: "/dashboards/clv_demo_2.dashboard"
 
 ############ Model Configuration #############
 
