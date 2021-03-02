@@ -79,7 +79,48 @@ measure: count {
   drill_fields: []
 }
 
+  dimension: churn_risk {
+
+    type: string
+
+    html: {% if value == 'LOW' %}
+          <p style="color: white; background-color: darkgreen; font-size:100%; text-align:center">{{ rendered_value }}</font>
+          {% elsif value == 'MEDIUM' %}
+          <p style="color: white; background-color: goldenrod; font-size:100%; text-align:center">{{ rendered_value }}</font>
+          {% else %}
+          <p style="color: white; background-color: darkred; font-size:100%; text-align:center">{{ rendered_value }}</font>
+          {% endif %} ;;
+
+      case: {
+        when: {
+          label: "HIGH"
+          sql: ${predicted_fut_transactions} <= 1 ;;
+        }
+
+        when: {
+          label: "MEDIUM"
+          sql: ${predicted_fut_transactions} > 1 and ${predicted_fut_transactions} <= 2 ;;
+        }
+
+        when: {
+          label: "LOW"
+          sql: ${predicted_fut_transactions} > 2 ;;
+        }
+      }
+
+    }
+
 ### Added measures
+
+  measure: clv_variance {
+    sql:(${average_predicted_clv} - ${order_items.total_sale_price}) / ${order_items.total_sale_price};;
+    type: number
+  }
+
+  measure: freq_variance {
+    sql:(${order_items.count}-${predicted_fut_transactions}) / ${order_items.count};;
+    type: number
+  }
 
 measure: average_predicted_clv {
   type: average
