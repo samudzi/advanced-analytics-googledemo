@@ -1,5 +1,5 @@
 view: customer_segmentation_results {
-  label: "Customer Segmentation with BQML"
+  label: "BQML K-Means: Get Results"
   sql_table_name: looker_pdts.{% parameter customer_segmentation_create.model_name %}_predict ;;
 
   dimension: user_id {

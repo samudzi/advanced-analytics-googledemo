@@ -2,10 +2,10 @@ include: "/bqml/**/*.view"
 
 include: "/explores/ecommerce_data.explore"
 
-explore: bqml_order_items {
+explore: bqml_customer_segmentation {
   extends: [order_items]
   view_name: order_items
-  label: "Looker + BQML Examples"
+  label: "BQML K-Means Clustering: Customer Segmentation"
   description: "Use this Explore to build a BQML K-means Clustering model for customer segmentation analysis"
 
   join: customer_segmentation_create {

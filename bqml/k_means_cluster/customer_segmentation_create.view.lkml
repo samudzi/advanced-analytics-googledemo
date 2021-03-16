@@ -1,38 +1,41 @@
 view: customer_segmentation_create {
-  label: "Customer Segmentation with BQML"
+  label: "BQML K-Means: Create Model"
   derived_table: {
     datagroup_trigger: bqml_model_creation
     create_process: {
 
-      sql_step: CREATE OR REPLACE MODEL looker_pdts.{% parameter model_name %} OPTIONS(model_type='kmeans',
-                  num_clusters = {% parameter number_of_clusters %}) AS (
-                    SELECT
-                      users.id  AS user_id,
-                      {% if user_attribute_1._parameter_value == 'select_attribute' %}
-                      {% else %}
-                        {% parameter user_attribute_1 %},
-                      {% endif %}
-                      {% if user_attribute_2._parameter_value == 'select_attribute' %}
-                      {% else %}
-                        {% parameter user_attribute_2 %},
-                      {% endif %}
-                      {% if user_attribute_3._parameter_value == 'select_attribute' %}
-                      {% else %}
-                        {% parameter user_attribute_3 %},
-                      {% endif %}
-                      {% if user_attribute_4._parameter_value == 'select_attribute' %}
-                      {% else %}
-                        {% parameter user_attribute_4 %},
-                      {% endif %}
-                      {% if user_attribute_4._parameter_value == 'select_attribute' %}
-                      {% else %}
-                        {% parameter user_attribute_5 %}
-                      {% endif %}
+      sql_step: CREATE OR REPLACE MODEL looker_pdts.{% parameter model_name %}
+                  OPTIONS(MODEL_TYPE = 'KMEANS'
+                          , NUM_CLUSTERS = {% parameter number_of_clusters %}
+                          , KMEANS_INIT_METHOD = 'KMEANS++'
+                          , STANDARDIZE_FEATURES = TRUE)
+                  AS (
+                      SELECT
+                        {% if user_attribute_1._parameter_value == 'select_attribute' %}
+                        {% else %}
+                          {% parameter user_attribute_1 %},
+                        {% endif %}
+                        {% if user_attribute_2._parameter_value == 'select_attribute' %}
+                        {% else %}
+                          {% parameter user_attribute_2 %},
+                        {% endif %}
+                        {% if user_attribute_3._parameter_value == 'select_attribute' %}
+                        {% else %}
+                          {% parameter user_attribute_3 %},
+                        {% endif %}
+                        {% if user_attribute_4._parameter_value == 'select_attribute' %}
+                        {% else %}
+                          {% parameter user_attribute_4 %},
+                        {% endif %}
+                        {% if user_attribute_4._parameter_value == 'select_attribute' %}
+                        {% else %}
+                          {% parameter user_attribute_5 %}
+                        {% endif %}
 
-                    FROM ${users.SQL_TABLE_NAME}  AS users
-                    LEFT JOIN ${user_order_facts.SQL_TABLE_NAME} AS user_order_facts
-                    ON users.id = user_order_facts.user_id
-                    )
+                      FROM ${users.SQL_TABLE_NAME}  AS users
+                      LEFT JOIN ${user_order_facts.SQL_TABLE_NAME} AS user_order_facts
+                      ON users.id = user_order_facts.user_id
+                      )
       ;;
 
       sql_step: CREATE OR REPLACE TABLE looker_pdts.{% parameter model_name %}_predict AS
