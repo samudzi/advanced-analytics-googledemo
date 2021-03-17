@@ -1,8 +1,8 @@
 view: k_means_training_data {
+  label: "1. BQML K-Means: Select Training Data"
   derived_table: {
-
     sql:  SELECT
-            users.id  AS user_id,
+            {% parameter item_id %},
             {% if user_attribute_1._parameter_value == 'select_attribute' %}
             {% else %}
               {% parameter user_attribute_1 %},
@@ -23,27 +23,23 @@ view: k_means_training_data {
             {% else %}
               {% parameter user_attribute_5 %}
             {% endif %}
-        FROM ${users.SQL_TABLE_NAME}  AS users
-        LEFT JOIN ${user_order_facts.SQL_TABLE_NAME} AS user_order_facts
-        ON users.id = user_order_facts.user_id
+        FROM ${dataset_1.SQL_TABLE_NAME}
     ;;
   }
 
-  dimension: user_id {
-    primary_key: yes
-    hidden: yes
+  parameter: item_id {
+    label: "Select Identifier Field"
+    description: "Choose a field that uniquely identifies the items you want to cluster"
+    type: unquoted
+    suggest_explore: dataset_columns
+    suggest_dimension: dataset_columns.column_name
   }
 
-  parameter: model_name {
-    label: "Name your Segmentation model"
-    description: "Enter a unique name for your BQML model"
+  parameter: features {
+    label: "Select attributes of items you want to cluster"
     type: unquoted
-  }
-
-  parameter: number_of_clusters {
-    label: "Select Number of Segments"
-    description: "Enter the number of segments you want to create"
-    type: unquoted
+    suggest_explore: dataset_columns
+    suggest_dimension: dataset_columns.column_name
   }
 
   parameter: user_attribute_1 {
@@ -56,79 +52,79 @@ view: k_means_training_data {
     }
     allowed_value: {
       label: "Age"
-      value: "users.age"
+      value: "age"
     }
     allowed_value: {
       label: "City"
-      value: "users.city"
+      value: "city"
     }
     allowed_value: {
       label: "Country"
-      value: "users.country"
+      value: "country"
     }
     allowed_value: {
       label: "Created Date"
-      value: "users.created"
+      value: "created"
     }
     allowed_value: {
       label: "Days as Customer"
-      value: "user_order_facts.days_as_customer"
+      value: "days_as_customer"
     }
     allowed_value: {
       label: "Days as Customer"
-      value: "user_order_facts.days_as_customer"
+      value: "days_as_customer"
     }
     allowed_value: {
       label: "Distinct Months as Orders"
-      value: "user_order_facts.distinct_months_with_orders"
+      value: "distinct_months_with_orders"
     }
     allowed_value: {
       label: "First Order Date"
-      value: "user_order_facts.first_order"
+      value: "first_order"
     }
     allowed_value: {
       label: "Gender"
-      value: "users.gender"
+      value: "gender"
     }
     allowed_value: {
       label: "Is Active Customer"
-      value: "user_order_facts.is_active_customer"
+      value: "is_active_customer"
     }
     allowed_value: {
       label: "Latest Order Date"
-      value: "user_order_facts.latest_order"
+      value: "latest_order"
     }
     allowed_value: {
       label: "Lifetime Orders"
-      value: "user_order_facts.lifetime_orders"
+      value: "lifetime_orders"
     }
     allowed_value: {
       label: "Lifetime Revenue"
-      value: "user_order_facts.lifetime_revenue"
+      value: "lifetime_revenue"
     }
     allowed_value: {
       label: "Over 21"
-      value: "users.over_21"
+      value: "over_21"
     }
     allowed_value: {
       label: "Repeat Customer"
-      value: "user_order_facts.repeat_customer"
+      value: "repeat_customer"
     }
     allowed_value: {
       label: "State"
-      value: "users.state"
+      value: "state"
     }
     allowed_value: {
       label: "Traffic Source"
-      value: "users.traffic_source"
+      value: "traffic_source"
     }
     allowed_value: {
       label: "UK Postcode"
-      value: "users.uk_postcode"
+      value: "uk_postcode"
     }
     allowed_value: {
       label: "US Zip Code"
-      value: "users.zip"
+      value: "zip"
     }
   }
 
@@ -142,79 +138,79 @@ view: k_means_training_data {
     }
     allowed_value: {
       label: "Age"
-      value: "users.age"
+      value: "age"
     }
     allowed_value: {
       label: "City"
-      value: "users.city"
+      value: "city"
     }
     allowed_value: {
       label: "Country"
-      value: "users.country"
+      value: "country"
     }
     allowed_value: {
       label: "Created Date"
-      value: "users.created"
+      value: "created"
     }
     allowed_value: {
       label: "Days as Customer"
-      value: "user_order_facts.days_as_customer"
+      value: "days_as_customer"
     }
     allowed_value: {
       label: "Days as Customer"
-      value: "user_order_facts.days_as_customer"
+      value: "days_as_customer"
     }
     allowed_value: {
       label: "Distinct Months as Orders"
-      value: "user_order_facts.distinct_months_with_orders"
+      value: "distinct_months_with_orders"
     }
     allowed_value: {
       label: "First Order Date"
-      value: "user_order_facts.first_order"
+      value: "first_order"
     }
     allowed_value: {
       label: "Gender"
-      value: "users.gender"
+      value: "gender"
     }
     allowed_value: {
       label: "Is Active Customer"
-      value: "user_order_facts.is_active_customer"
+      value: "is_active_customer"
     }
     allowed_value: {
       label: "Latest Order Date"
-      value: "user_order_facts.latest_order"
+      value: "latest_order"
     }
     allowed_value: {
       label: "Lifetime Orders"
-      value: "user_order_facts.lifetime_orders"
+      value: "lifetime_orders"
     }
     allowed_value: {
       label: "Lifetime Revenue"
-      value: "user_order_facts.lifetime_revenue"
+      value: "lifetime_revenue"
     }
     allowed_value: {
       label: "Over 21"
-      value: "users.over_21"
+      value: "over_21"
     }
     allowed_value: {
       label: "Repeat Customer"
-      value: "user_order_facts.repeat_customer"
+      value: "repeat_customer"
     }
     allowed_value: {
       label: "State"
-      value: "users.state"
+      value: "state"
     }
     allowed_value: {
       label: "Traffic Source"
-      value: "users.traffic_source"
+      value: "traffic_source"
     }
     allowed_value: {
       label: "UK Postcode"
-      value: "users.uk_postcode"
+      value: "uk_postcode"
     }
     allowed_value: {
       label: "US Zip Code"
-      value: "users.zip"
+      value: "zip"
     }
   }
 
@@ -228,79 +224,79 @@ view: k_means_training_data {
     }
     allowed_value: {
       label: "Age"
-      value: "users.age"
+      value: "age"
     }
     allowed_value: {
       label: "City"
-      value: "users.city"
+      value: "city"
     }
     allowed_value: {
       label: "Country"
-      value: "users.country"
+      value: "country"
     }
     allowed_value: {
       label: "Created Date"
-      value: "users.created"
+      value: "created"
     }
     allowed_value: {
       label: "Days as Customer"
-      value: "user_order_facts.days_as_customer"
+      value: "days_as_customer"
     }
     allowed_value: {
       label: "Days as Customer"
-      value: "user_order_facts.days_as_customer"
+      value: "days_as_customer"
     }
     allowed_value: {
       label: "Distinct Months as Orders"
-      value: "user_order_facts.distinct_months_with_orders"
+      value: "distinct_months_with_orders"
     }
     allowed_value: {
       label: "First Order Date"
-      value: "user_order_facts.first_order"
+      value: "first_order"
     }
     allowed_value: {
       label: "Gender"
-      value: "users.gender"
+      value: "gender"
     }
     allowed_value: {
       label: "Is Active Customer"
-      value: "user_order_facts.is_active_customer"
+      value: "is_active_customer"
     }
     allowed_value: {
       label: "Latest Order Date"
-      value: "user_order_facts.latest_order"
+      value: "latest_order"
     }
     allowed_value: {
       label: "Lifetime Orders"
-      value: "user_order_facts.lifetime_orders"
+      value: "lifetime_orders"
     }
     allowed_value: {
       label: "Lifetime Revenue"
-      value: "user_order_facts.lifetime_revenue"
+      value: "lifetime_revenue"
     }
     allowed_value: {
       label: "Over 21"
-      value: "users.over_21"
+      value: "over_21"
     }
     allowed_value: {
       label: "Repeat Customer"
-      value: "user_order_facts.repeat_customer"
+      value: "repeat_customer"
     }
     allowed_value: {
       label: "State"
-      value: "users.state"
+      value: "state"
     }
     allowed_value: {
       label: "Traffic Source"
-      value: "users.traffic_source"
+      value: "traffic_source"
     }
     allowed_value: {
       label: "UK Postcode"
-      value: "users.uk_postcode"
+      value: "uk_postcode"
     }
     allowed_value: {
       label: "US Zip Code"
-      value: "users.zip"
+      value: "zip"
     }
   }
 
@@ -314,79 +310,79 @@ view: k_means_training_data {
     }
     allowed_value: {
       label: "Age"
-      value: "users.age"
+      value: "age"
     }
     allowed_value: {
       label: "City"
-      value: "users.city"
+      value: "city"
     }
     allowed_value: {
       label: "Country"
-      value: "users.country"
+      value: "country"
     }
     allowed_value: {
       label: "Created Date"
-      value: "users.created"
+      value: "created"
     }
     allowed_value: {
       label: "Days as Customer"
-      value: "user_order_facts.days_as_customer"
+      value: "days_as_customer"
     }
     allowed_value: {
       label: "Days as Customer"
-      value: "user_order_facts.days_as_customer"
+      value: "days_as_customer"
     }
     allowed_value: {
       label: "Distinct Months as Orders"
-      value: "user_order_facts.distinct_months_with_orders"
+      value: "distinct_months_with_orders"
     }
     allowed_value: {
       label: "First Order Date"
-      value: "user_order_facts.first_order"
+      value: "first_order"
     }
     allowed_value: {
       label: "Gender"
-      value: "users.gender"
+      value: "gender"
     }
     allowed_value: {
       label: "Is Active Customer"
-      value: "user_order_facts.is_active_customer"
+      value: "is_active_customer"
     }
     allowed_value: {
       label: "Latest Order Date"
-      value: "user_order_facts.latest_order"
+      value: "latest_order"
     }
     allowed_value: {
       label: "Lifetime Orders"
-      value: "user_order_facts.lifetime_orders"
+      value: "lifetime_orders"
     }
     allowed_value: {
       label: "Lifetime Revenue"
-      value: "user_order_facts.lifetime_revenue"
+      value: "lifetime_revenue"
     }
     allowed_value: {
       label: "Over 21"
-      value: "users.over_21"
+      value: "over_21"
     }
     allowed_value: {
       label: "Repeat Customer"
-      value: "user_order_facts.repeat_customer"
+      value: "repeat_customer"
     }
     allowed_value: {
       label: "State"
-      value: "users.state"
+      value: "state"
     }
     allowed_value: {
       label: "Traffic Source"
-      value: "users.traffic_source"
+      value: "traffic_source"
     }
     allowed_value: {
       label: "UK Postcode"
-      value: "users.uk_postcode"
+      value: "uk_postcode"
     }
     allowed_value: {
       label: "US Zip Code"
-      value: "users.zip"
+      value: "zip"
     }
   }
 
@@ -400,79 +396,79 @@ view: k_means_training_data {
     }
     allowed_value: {
       label: "Age"
-      value: "users.age"
+      value: "age"
     }
     allowed_value: {
       label: "City"
-      value: "users.city"
+      value: "city"
     }
     allowed_value: {
       label: "Country"
-      value: "users.country"
+      value: "country"
     }
     allowed_value: {
       label: "Created Date"
-      value: "users.created"
+      value: "created"
     }
     allowed_value: {
       label: "Days as Customer"
-      value: "user_order_facts.days_as_customer"
+      value: "days_as_customer"
     }
     allowed_value: {
       label: "Days as Customer"
-      value: "user_order_facts.days_as_customer"
+      value: "days_as_customer"
     }
     allowed_value: {
       label: "Distinct Months as Orders"
-      value: "user_order_facts.distinct_months_with_orders"
+      value: "distinct_months_with_orders"
     }
     allowed_value: {
       label: "First Order Date"
-      value: "user_order_facts.first_order"
+      value: "first_order"
     }
     allowed_value: {
       label: "Gender"
-      value: "users.gender"
+      value: "gender"
     }
     allowed_value: {
       label: "Is Active Customer"
-      value: "user_order_facts.is_active_customer"
+      value: "is_active_customer"
     }
     allowed_value: {
       label: "Latest Order Date"
-      value: "user_order_facts.latest_order"
+      value: "latest_order"
     }
     allowed_value: {
       label: "Lifetime Orders"
-      value: "user_order_facts.lifetime_orders"
+      value: "lifetime_orders"
     }
     allowed_value: {
       label: "Lifetime Revenue"
-      value: "user_order_facts.lifetime_revenue"
+      value: "lifetime_revenue"
     }
     allowed_value: {
       label: "Over 21"
-      value: "users.over_21"
+      value: "over_21"
     }
     allowed_value: {
       label: "Repeat Customer"
-      value: "user_order_facts.repeat_customer"
+      value: "repeat_customer"
     }
     allowed_value: {
       label: "State"
-      value: "users.state"
+      value: "state"
     }
     allowed_value: {
       label: "Traffic Source"
-      value: "users.traffic_source"
+      value: "traffic_source"
     }
     allowed_value: {
       label: "UK Postcode"
-      value: "users.uk_postcode"
+      value: "uk_postcode"
     }
     allowed_value: {
       label: "US Zip Code"
-      value: "users.zip"
+      value: "zip"
     }
   }
 

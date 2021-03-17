@@ -1,20 +1,19 @@
 view: k_means_predictions {
+  label: "4. BQML K-Means: Get Predictions"
   derived_table: {
     sql:  SELECT *
-          FROM ml.PREDICT(MODEL looker_pdts.{% parameter k_means_training_data.model_name %},
-              (SELECT
-                *
-              FROM ${k_means_training_data.SQL_TABLE_NAME}
+          FROM ml.PREDICT(MODEL looker_pdts.{% parameter k_means_model.model_name %},
+              (SELECT * FROM ${k_means_training_data.SQL_TABLE_NAME}
               )
             )
     ;;
   }
 
-  dimension: users_id {
+  dimension: user_id {
     primary_key: yes
     hidden: yes
     type: number
-    sql: ${TABLE}.users_id ;;
+    sql: ${TABLE}.user_id ;;
   }
 
   dimension: centroid_id {

@@ -7,6 +7,7 @@ include: "/explores/ecommerce_data.explore"
 include: "/explores/cdnow.explore"
 include: "/explores/ga.explore"
 include: "/explores/bqml_customer_segmentation.explore"
+include: "/explores/bqml_k_means.explore"
 
 #include relevant dashboards
 include: "/dashboards/clv_demo_1.dashboard"
