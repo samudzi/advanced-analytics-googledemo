@@ -34,5 +34,3 @@ explore: bqml_k_means {
     relationship: many_to_one
   }
 }
-
-explore: users_dataset_field_suggestions { hidden: yes }

@@ -2,7 +2,7 @@ view: k_means_create_model {
   label: "1 - Create or Replace Model"
 
   derived_table: {
-    persist_for: "24 hours"
+    persist_for: "1 minute"
 
     create_process: {
       sql_step: CREATE OR REPLACE MODEL looker_pdts.{% parameter model_name %}

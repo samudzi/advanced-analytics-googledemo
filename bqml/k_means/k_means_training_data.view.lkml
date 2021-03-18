@@ -14,13 +14,13 @@ view: k_means_training_data {
 
   filter: item_id {
     type: string
-    suggest_explore: users_dataset_field_suggestions
-    suggest_dimension: users_dataset_field_suggestions.column_name
+    suggest_explore: field_suggestions
+    suggest_dimension: field_suggestions.column_name
   }
 
   filter: features {
     type: string
-    suggest_explore: users_dataset_field_suggestions
-    suggest_dimension: users_dataset_field_suggestions.column_name
+    suggest_explore: field_suggestions
+    suggest_dimension: field_suggestions.column_name
   }
 }
