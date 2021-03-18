@@ -6,15 +6,15 @@ view: k_means_create_model {
 
     create_process: {
 
-      sql_step: CREATE OR REPLACE MODEL looker_pdts.{% parameter model_name %}
+      sql_step: CREATE OR REPLACE MODEL looker_pdts.{% parameter name_your_model %}
                   OPTIONS(MODEL_TYPE = 'KMEANS'
-                  {% if number_of_clusters._parameter_value == 'auto' %}
+                  {% if choose_number_of_clusters._parameter_value == 'auto' %}
                   {% else %}
-                  , NUM_CLUSTERS = {% parameter number_of_clusters %}
+                  , NUM_CLUSTERS = {% parameter choose_number_of_clusters %}
                   {% endif %}
                   , KMEANS_INIT_METHOD = 'KMEANS++'
                   , STANDARDIZE_FEATURES = TRUE)
-                  AS (SELECT * EXCEPT({{ _filters['k_means_training_data.item_id'] | sql_quote | replace: '"','' | remove: "'" }})
+                  AS (SELECT * EXCEPT({{ _filters['k_means_training_data.select_item_id'] | sql_quote | replace: '"','' | remove: "'" }})
                       FROM ${k_means_training_data.SQL_TABLE_NAME})
       ;;
 
@@ -33,28 +33,50 @@ view: k_means_create_model {
                 features,
                 created_at)
 
-                SELECT '{% parameter model_name %}' AS model_name,
-                  '{% parameter number_of_clusters %}' AS number_of_clusters,
-                  {% assign item_id = _filters['k_means_training_data.item_id'] | sql_quote | replace: '"','' | remove: "'" %}
+                SELECT '{% parameter name_your_model %}' AS model_name,
+                  '{% parameter choose_number_of_clusters %}' AS number_of_clusters,
+                  {% assign item_id = _filters['k_means_training_data.select_item_id'] | sql_quote | replace: '"','' | remove: "'" %}
                     '{{ item_id }}' AS item_id,
-                  {% assign features = _filters['k_means_training_data.features'] | sql_quote | replace: '"','' | remove: "'" %}
+                  {% assign features = _filters['k_means_training_data.select_features'] | sql_quote | replace: '"','' | remove: "'" %}
                     '{{ features }}' AS features,
                   CURRENT_TIMESTAMP AS created_at
       ;;
     }
   }
 
-  parameter: model_name {
+  parameter: name_your_model {
     label: "Name Your BQML Model"
     description: "Enter a unique name for your BQML model"
     type: unquoted
+    suggest_explore: bqml_k_means_model_info
+    suggest_dimension: bqml_k_means_model_info.model_name
   }
 
-  parameter: number_of_clusters {
+  parameter: choose_number_of_clusters {
     label: "Select Number of Clusters (optional)"
     description: "Enter the number of clusters you want to create"
     type: number
     default_value: "auto"
+  }
+
+  dimension: model_name {
+    type: string
+    sql: '{% parameter name_your_model %}' ;;
+  }
+
+  dimension: number_of_clusters {
+    type: string
+    sql: '{% parameter choose_number_of_clusters %}' ;;
+  }
+
+  dimension: item_id {
+    type: string
+    sql: '{{ item_id }}' ;;
+  }
+
+  dimension: features {
+    type: string
+    sql: '{{ features }}' ;;
   }
 
 }

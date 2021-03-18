@@ -10,6 +10,8 @@ view: k_means_predict {
     label: "Select an Existing BQML Model"
     description: "Which BQML model do you want to use for predictions?"
     type: unquoted
+    suggest_explore: bqml_k_means_model_info
+    suggest_dimension: bqml_k_means_model_info.model_name
   }
 
   dimension: user_id {

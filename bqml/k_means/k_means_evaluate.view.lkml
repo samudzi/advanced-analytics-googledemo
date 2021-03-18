@@ -7,6 +7,8 @@ view: k_means_evaluate {
     label: "Select an Existing BQML Model"
     description: "Which BQML model do you want to evaluate?"
     type: unquoted
+    suggest_explore: bqml_k_means_model_info
+    suggest_dimension: bqml_k_means_model_info.model_name
   }
 
   dimension: davies_bouldin_index {
