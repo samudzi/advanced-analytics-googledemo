@@ -1,5 +1,6 @@
 view: k_means_training_data {
-  label: "1. BQML K-Means: Select Training Data"
+  label: "1. BQML K-Means: Create or Replace Model"
+
   derived_table: {
     sql:  SELECT
             {% assign item_id = _filters['item_id'] | sql_quote | replace: '"','' | remove: "'" %}

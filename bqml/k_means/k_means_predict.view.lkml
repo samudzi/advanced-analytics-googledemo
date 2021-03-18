@@ -1,5 +1,6 @@
 view: k_means_predict {
-  label: "4. BQML K-Means: Run Predictions"
+  label: "3. BQML K-Means: Run Predictions"
+
   derived_table: {
     sql:  SELECT *
           FROM ml.PREDICT(MODEL looker_pdts.{% parameter model_name %},

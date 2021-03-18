@@ -1,5 +1,6 @@
 view: k_means_evaluate {
-  label: "3. BQML K-Means: Evaluate Model"
+  label: "2. BQML K-Means: Evaluate Model"
+
   derived_table: {
     sql: SELECT * FROM ML.EVALUATE(MODEL looker_pdts.{% parameter model_name %}) ;;
   }
