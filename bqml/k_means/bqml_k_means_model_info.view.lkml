@@ -24,6 +24,12 @@ view: bqml_k_means_model_info {
     sql: ${TABLE}.features ;;
   }
 
+  dimension_group: created_at {
+    type: time
+    timeframes: [raw,time,]
+    sql: ${TABLE}.created_at ;;
+  }
+
   measure: count {
     type: count
     drill_fields: [model_name]
