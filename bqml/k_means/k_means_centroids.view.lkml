@@ -1,9 +1,7 @@
 view: k_means_centroids {
   label: "BQML 3.2 - Centroid Info"
 
-  derived_table: {
-    sql: SELECT * FROM ML.CENTROIDS(MODEL looker_pdts.{% parameter k_means_predict.model_name %}) ;;
-  }
+  sql_table_name: ML.CENTROIDS(MODEL looker_pdts.{% parameter k_means_predict.model_name %}) ;;
 
   dimension: centroid_id {
     primary_key: yes

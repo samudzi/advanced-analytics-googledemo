@@ -1,14 +1,10 @@
 view: k_means_predict {
   label: "BQML 3.1 - Run Predictions"
 
-  derived_table: {
-    sql:  SELECT *
-          FROM ml.PREDICT(MODEL looker_pdts.{% parameter model_name %},
-              (SELECT * FROM ${k_means_training_data.SQL_TABLE_NAME}
-              )
-            )
-    ;;
-  }
+  sql_table_name: ML.PREDICT(MODEL looker_pdts.{% parameter model_name %},
+                    (SELECT * FROM ${k_means_training_data.SQL_TABLE_NAME})
+                  )
+  ;;
 
   parameter: model_name {
     label: "Select an Existing BQML Model"
