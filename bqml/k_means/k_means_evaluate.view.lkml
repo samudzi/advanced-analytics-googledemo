@@ -6,7 +6,7 @@ view: k_means_evaluate {
 
   parameter: model_name {
     label: "BQML Model Name"
-    description: "Which BQML Model do you want to use for predictions?"
+    description: "Which BQML Model do you want to evaluate?"
     type: unquoted
   }
 
