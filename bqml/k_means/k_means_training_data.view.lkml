@@ -1,5 +1,5 @@
 view: k_means_training_data {
-  label: "1 - Create or Replace Model"
+  label: "BQML 1 - Create or Replace Model"
 
   derived_table: {
     sql:  SELECT

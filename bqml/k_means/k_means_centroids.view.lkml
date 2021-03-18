@@ -1,5 +1,5 @@
 view: k_means_centroids {
-  label: "3.2 - Centroid Info"
+  label: "BQML 3.2 - Centroid Info"
 
   derived_table: {
     sql: SELECT * FROM ML.CENTROIDS(MODEL looker_pdts.{% parameter k_means_predict.model_name %}) ;;

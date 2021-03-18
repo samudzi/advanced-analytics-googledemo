@@ -1,5 +1,5 @@
 view: k_means_predict {
-  label: "3.1 - Run Predictions"
+  label: "BQML 3.1 - Run Predictions"
 
   derived_table: {
     sql:  SELECT *
