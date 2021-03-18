@@ -23,6 +23,7 @@ view: k_means_create_model {
                   number_of_clusters INT64,
                   item_id ARRAY<STRING>,
                   features ARRAY<STRING>)
+      ;;
 
       sql_step: INSERT INTO ooker_pdts.BQML_K_MEANS_MODEL_INFO
                 (model_name,
