@@ -1,5 +1,5 @@
 view: k_means_predict {
-  label: "BQML 3.1 - Run Predictions"
+  label: "BQML 3 - Run Predictions"
 
   sql_table_name: ML.PREDICT(MODEL looker_pdts.{% parameter model_name %},
                     (SELECT * FROM ${k_means_training_data.SQL_TABLE_NAME})
@@ -16,7 +16,7 @@ view: k_means_predict {
 
   dimension: user_id {
     primary_key: yes
-    hidden: yes
+    # hidden: yes
     type: number
     sql: ${TABLE}.user_id ;;
   }
@@ -30,5 +30,9 @@ view: k_means_predict {
   #   type: string
   #   sql: ${TABLE}.NEAREST_CENTROIDS_DISTANCE ;;
   # }
+
+  measure: count {
+    type: count
+  }
 
 }

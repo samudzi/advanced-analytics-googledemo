@@ -1,5 +1,5 @@
 view: k_means_centroids {
-  label: "BQML 3.2 - Centroid Info"
+  label: "BQML 3 - Run Predictions"
 
   sql_table_name: ML.CENTROIDS(MODEL looker_pdts.{% parameter k_means_predict.model_name %}) ;;
 
@@ -23,10 +23,6 @@ view: k_means_centroids {
   dimension: categorical_value {
     type: string
     sql: ${TABLE}.categorical_value ;;
-  }
-
-  measure: count {
-    type: count
   }
 
 }

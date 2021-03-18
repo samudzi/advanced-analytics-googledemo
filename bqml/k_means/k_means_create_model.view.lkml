@@ -45,7 +45,7 @@ view: k_means_create_model {
   }
 
   parameter: name_your_model {
-    label: "Name Your BQML Model"
+    label: "Name Your BQML Model (required)"
     description: "Enter a unique name for your BQML model"
     type: unquoted
     suggest_explore: bqml_k_means_model_info
@@ -59,24 +59,30 @@ view: k_means_create_model {
     default_value: "auto"
   }
 
-  dimension: model_name {
-    type: string
-    sql: '{% parameter name_your_model %}' ;;
-  }
+  # dimension: model_name {
+  #   type: string
+  #   sql: '{% parameter name_your_model %}' ;;
+  # }
 
-  dimension: number_of_clusters {
-    type: string
-    sql: '{% parameter choose_number_of_clusters %}' ;;
-  }
+  # dimension: number_of_clusters {
+  #   type: string
+  #   sql: '{% parameter choose_number_of_clusters %}' ;;
+  # }
 
-  dimension: item_id {
-    type: string
-    sql: '{{ item_id }}' ;;
-  }
+  # dimension: item_id {
+  #   type: string
+  #   sql: '{{ item_id }}' ;;
+  # }
 
-  dimension: features {
+  # dimension: features {
+  #   type: string
+  #   sql: '{{ features }}' ;;
+  # }
+
+  dimension: status {
+    label: "Model Build Status (required)"
     type: string
-    sql: '{{ features }}' ;;
+    sql: 'Model Created' ;;
   }
 
 }

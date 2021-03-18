@@ -13,12 +13,16 @@ view: k_means_training_data {
   }
 
   filter: select_item_id {
+    label: "Select an ID Field (required)"
+    description: "Choose the field that identifies the items you want to cluster"
     type: string
     suggest_explore: field_suggestions
     suggest_dimension: field_suggestions.column_name
   }
 
   filter: select_features {
+    label: "Select Features (required)"
+    description: "Choose the attribute fields that you want to use to cluster your data"
     type: string
     suggest_explore: field_suggestions
     suggest_dimension: field_suggestions.column_name
