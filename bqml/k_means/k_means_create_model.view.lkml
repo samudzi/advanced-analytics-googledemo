@@ -1,8 +1,8 @@
 view: k_means_create_model {
-  label: "1. BQML K-Means: Create or Replace Model"
+  label: "1 - Create or Replace Model"
 
   derived_table: {
-    datagroup_trigger: bqml_model_creation
+    persist_for: "24 hours"
 
     create_process: {
       sql_step: CREATE OR REPLACE MODEL looker_pdts.{% parameter model_name %}
@@ -32,11 +32,4 @@ view: k_means_create_model {
     default_value: "null"
   }
 
-}
-
-view: create_table {
-  derived_table: {
-    datagroup_trigger: bqml_model_creation
-    sql_create: CREATE TABLE IF NOT EXISTS ${k_means_create_model.SQL_TABLE_NAME} (col_1 INT64) ;;
-  }
 }

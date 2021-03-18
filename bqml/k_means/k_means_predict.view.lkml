@@ -1,5 +1,5 @@
 view: k_means_predict {
-  label: "3. BQML K-Means: Run Predictions"
+  label: "3.1 - Run Predictions"
 
   derived_table: {
     sql:  SELECT *
@@ -11,8 +11,8 @@ view: k_means_predict {
   }
 
   parameter: model_name {
-    label: "BQML Model Name"
-    description: "Which BQML Model do you want to use for predictions?"
+    label: "Select an Existing BQML Model"
+    description: "Which BQML model do you want to use for predictions?"
     type: unquoted
   }
 
@@ -28,9 +28,9 @@ view: k_means_predict {
     sql: ${TABLE}.CENTROID_ID ;;
   }
 
-  dimension: nearest_centroids_distance {
-    type: string
-    sql: ${TABLE}.NEAREST_CENTROIDS_DISTANCE ;;
-  }
+  # dimension: nearest_centroids_distance {
+  #   type: string
+  #   sql: ${TABLE}.NEAREST_CENTROIDS_DISTANCE ;;
+  # }
 
 }

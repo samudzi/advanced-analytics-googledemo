@@ -27,6 +27,12 @@ explore: bqml_k_means {
     sql_on: ${users.id} = ${k_means_predict.user_id} ;;
     relationship: one_to_one
   }
+
+  join: k_means_centroids {
+    type: left_outer
+    sql_on: ${k_means_predict.centroid_id} = ${k_means_centroids.centroid_id} ;;
+    relationship: many_to_one
+  }
 }
 
 explore: users_dataset_field_suggestions { hidden: yes }
