@@ -25,7 +25,7 @@ view: k_means_create_model {
                   features ARRAY<STRING>)
       ;;
 
-      sql_step: INSERT INTO ooker_pdts.BQML_K_MEANS_MODEL_INFO
+      sql_step: INSERT INTO looker_pdts.BQML_K_MEANS_MODEL_INFO
                 (model_name,
                 number_of_clusters,
                 item_id,
