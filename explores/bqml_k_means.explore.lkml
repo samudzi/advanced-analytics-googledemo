@@ -11,16 +11,22 @@ explore: bqml_k_means {
     sql: ;;
     relationship: one_to_one
   }
-  join: k_means_model {
-    sql:;;
+
+  join: k_means_create_model {
+    sql: ;;
     relationship: one_to_one
   }
 
-  join: k_means_predictions {
+  join: k_means_evaluate {
+    type: cross
+    relationship: many_to_one
+  }
+
+  join: k_means_predict {
     type: left_outer
-    sql_on: ${users.id} = ${k_means_predictions.user_id} ;;
+    sql_on: ${users.id} = ${k_means_predict.user_id} ;;
     relationship: one_to_one
   }
 }
 
-explore: field_suggestions { hidden: yes }
+explore: users_dataset_field_suggestions { hidden: yes }

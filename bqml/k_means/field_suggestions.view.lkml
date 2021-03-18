@@ -1,4 +1,4 @@
-view: field_suggestions {
+view: users_dataset_field_suggestions {
   derived_table: {
     sql:  SELECT table_name, column_name
           FROM looker-private-demo.ecomm.INFORMATION_SCHEMA.COLUMNS

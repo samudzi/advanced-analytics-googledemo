@@ -6,6 +6,5 @@ datagroup: ecommerce_etl {
 }
 
 datagroup: bqml_model_creation {
-  # sql_trigger: select current_timestamp ;;
-  sql_trigger: select 1 ;;
+  sql_trigger: SELECT CURRENT_DATE ;;
 }

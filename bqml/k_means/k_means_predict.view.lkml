@@ -1,12 +1,18 @@
-view: k_means_predictions {
-  label: "4. BQML K-Means: Get Predictions"
+view: k_means_predict {
+  label: "4. BQML K-Means: Run Predictions"
   derived_table: {
     sql:  SELECT *
-          FROM ml.PREDICT(MODEL looker_pdts.{% parameter k_means_model.model_name %},
+          FROM ml.PREDICT(MODEL looker_pdts.{% parameter model_name %},
               (SELECT * FROM ${k_means_training_data.SQL_TABLE_NAME}
               )
             )
     ;;
+  }
+
+  parameter: model_name {
+    label: "BQML Model Name"
+    description: "Which BQML Model do you want to use for predictions?"
+    type: unquoted
   }
 
   dimension: user_id {

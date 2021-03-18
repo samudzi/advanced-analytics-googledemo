@@ -1,13 +1,18 @@
-view: k_means_model {
+view: k_means_create_model {
   label: "2. BQML K-Means: Create Model"
   derived_table: {
     datagroup_trigger: bqml_model_creation
     sql_create: CREATE OR REPLACE MODEL looker_pdts.{% parameter model_name %}
                 OPTIONS(MODEL_TYPE = 'KMEANS'
+                {% if number_of_clusters._parameter_value == 'null' %}
+                {% else %}
                 , NUM_CLUSTERS = {% parameter number_of_clusters %}
+                {% endif %}
                 , KMEANS_INIT_METHOD = 'KMEANS++'
                 , STANDARDIZE_FEATURES = TRUE)
-                AS (SELECT * EXCEPT({% parameter k_means_training_data.item_id %}) FROM ${k_means_training_data.SQL_TABLE_NAME}) ;;
+                AS (SELECT * EXCEPT({{ _filters['k_means_training_data.item_id'] | sql_quote | replace: '"','' | remove: "'" }})
+                    FROM ${k_means_training_data.SQL_TABLE_NAME})
+    ;;
   }
 
   parameter: model_name {
@@ -17,9 +22,10 @@ view: k_means_model {
   }
 
   parameter: number_of_clusters {
-    label: "Select Number of Clusters"
+    label: "Select Number of Clusters (optional)"
     description: "Enter the number of clusters you want to create"
-    type: unquoted
+    type: number
+    default_value: "null"
   }
 
 }
