@@ -1,4 +1,6 @@
-explore: bqml_k_means_model_info {}
+explore: bqml_k_means_model_info {
+  persist_for: "0 minutes"
+}
 
 view: bqml_k_means_model_info {
   sql_table_name: `advanced-analytics-accelerator.looker_pdts.BQML_K_MEANS_MODEL_INFO` ;;
