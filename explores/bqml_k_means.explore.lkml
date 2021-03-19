@@ -1,4 +1,4 @@
-include: "/bqml/**/*.view"
+include: "/bqml/k_means/*.view"
 include: "/explores/ecommerce_data.explore"
 
 explore: bqml_k_means {

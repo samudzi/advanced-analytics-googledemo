@@ -1,7 +1,7 @@
 view: workflow_parameters {
 
   parameter: select_model_name {
-    view_label: " BQML K-Means Clustering Workflow"
+    view_label: "BQML K-Means Clustering Workflow"
     label: "BQML Model Name (required)"
     description: "Enter a unique name to create a new BQML model or select an existing model to use in your analysis"
     type: unquoted
