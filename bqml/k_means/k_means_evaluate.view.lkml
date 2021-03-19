@@ -9,7 +9,8 @@ view: k_means_evaluate {
     type: unquoted
     suggest_explore: bqml_k_means_model_info
     suggest_dimension: bqml_k_means_model_info.model_name
-  }
+    suggest_persist_for: "0 minutes"
+    }
 
   dimension: davies_bouldin_index {
     type: number

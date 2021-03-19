@@ -50,6 +50,7 @@ view: k_means_create_model {
     type: unquoted
     suggest_explore: bqml_k_means_model_info
     suggest_dimension: bqml_k_means_model_info.model_name
+    suggest_persist_for: "0 minutes"
   }
 
   parameter: choose_number_of_clusters {
