@@ -8,6 +8,8 @@ explore: bqml_k_means {
   label: "BQML K-Means Clustering"
   description: "Use this Explore to build a BQML K-means Clustering model"
 
+  persist_for: "0 minutes"
+
   always_filter: {
     filters: [workflow_parameters.select_model_name: ""]
   }
