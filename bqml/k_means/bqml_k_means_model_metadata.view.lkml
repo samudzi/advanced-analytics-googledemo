@@ -1,9 +1,3 @@
-explore: bqml_k_means_model_metadata {
-  group_label: "Advanced Analytics Workflows"
-  label: "BQML K-Means Model Metadata"
-  persist_for: "0 minutes"
-}
-
 view: bqml_k_means_model_metadata {
   label: "BQML K-Means Model Metadata"
   sql_table_name: `advanced-analytics-accelerator.looker_pdts.BQML_K_MEANS_MODEL_INFO` ;;
