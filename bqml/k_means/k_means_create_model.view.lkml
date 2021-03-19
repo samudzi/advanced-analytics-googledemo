@@ -52,7 +52,7 @@ view: k_means_create_model {
   }
 
   dimension: status {
-    label: "Select to Start Building Model (required)"
+    label: "Build Status (REQUIRED)"
     type: string
     sql: 'Model Created' ;;
   }

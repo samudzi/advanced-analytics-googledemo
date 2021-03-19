@@ -14,7 +14,7 @@ view: k_means_training_data {
   }
 
   filter: select_item_id {
-    label: "Select an ID Field (required)"
+    label: "Select an ID Field (REQUIRED)"
     description: "Choose the field that identifies the items you want to cluster"
     type: string
     suggest_explore: field_suggestions
@@ -23,7 +23,7 @@ view: k_means_training_data {
   }
 
   filter: select_features {
-    label: "Select Features (required)"
+    label: "Select Features (REQUIRED)"
     description: "Choose the attribute fields that you want to use to cluster your data"
     type: string
     suggest_explore: field_suggestions
