@@ -21,7 +21,15 @@ view: k_means_centroids {
   }
 
   dimension: categorical_value {
+    hidden: yes
     type: string
     sql: ${TABLE}.categorical_value ;;
   }
+}
+
+view: centroid_categorical_value {
+  label: "BQML 4 - Cluster Centroid Info: Categorical Value"
+
+  dimension: category { primary_key: yes }
+  dimension: value {}
 }

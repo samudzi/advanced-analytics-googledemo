@@ -45,4 +45,9 @@ explore: bqml_k_means {
     sql_on: ${k_means_predict.centroid_id} = ${k_means_centroids.centroid_id} ;;
     relationship: many_to_one
   }
+
+  join: centroid_categorical_value {
+      sql: LEFT JOIN UNNEST(k_means_centroids.categorical_value) as centroid_categorical_value ;;
+      relationship: one_to_many
+  }
 }
