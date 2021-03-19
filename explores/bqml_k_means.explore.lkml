@@ -4,11 +4,12 @@ include: "/explores/ecommerce_data.explore"
 explore: bqml_k_means {
   extends: [order_items]
   view_name: order_items
+  group_label: "Advanced Analytics Workflows"
   label: "BQML K-Means Clustering"
   description: "Use this Explore to build a BQML K-means Clustering model"
 
   always_filter: {
-    filters: [workflow_parameters.model_name: ""]
+    filters: [workflow_parameters.select_model_name: ""]
   }
 
   join: workflow_parameters {

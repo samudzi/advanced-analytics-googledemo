@@ -6,7 +6,7 @@ view: k_means_create_model {
 
     create_process: {
 
-      sql_step: CREATE OR REPLACE MODEL looker_pdts.{% parameter workflow_parameters.model_name %}
+      sql_step: CREATE OR REPLACE MODEL looker_pdts.{% parameter workflow_parameters.select_model_name %}
                   OPTIONS(MODEL_TYPE = 'KMEANS'
                   {% if choose_number_of_clusters._parameter_value == 'auto' %}
                   {% else %}
@@ -33,7 +33,7 @@ view: k_means_create_model {
                 features,
                 created_at)
 
-                SELECT '{% parameter workflow_parameters.model_name %}' AS model_name,
+                SELECT '{% parameter workflow_parameters.select_model_name %}' AS model_name,
                   '{% parameter choose_number_of_clusters %}' AS number_of_clusters,
                   {% assign item_id = _filters['k_means_training_data.select_item_id'] | sql_quote | replace: '"','' | remove: "'" %}
                     '{{ item_id }}' AS item_id,
