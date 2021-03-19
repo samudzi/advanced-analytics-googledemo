@@ -24,5 +24,4 @@ view: k_means_centroids {
     type: string
     sql: ${TABLE}.categorical_value ;;
   }
-
 }
