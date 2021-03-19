@@ -1,5 +1,5 @@
-include: "/bqml/k_means/*.view"
 include: "/explores/ecommerce_data.explore"
+include: "/bqml/k_means/*.view"
 
 explore: bqml_k_means {
   extends: [order_items]
