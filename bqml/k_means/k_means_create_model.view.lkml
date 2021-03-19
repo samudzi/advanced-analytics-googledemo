@@ -2,7 +2,8 @@ view: k_means_create_model {
   label: "BQML 1 - Create or Replace Model"
 
   derived_table: {
-    persist_for: "1 hour"
+    # persist_for: "1 hour"
+    persist_for: "1 second"
 
     create_process: {
 

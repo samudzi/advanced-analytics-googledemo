@@ -6,6 +6,7 @@ view: bqml_k_means_model_info {
   sql_table_name: `advanced-analytics-accelerator.looker_pdts.BQML_K_MEANS_MODEL_INFO` ;;
 
   dimension: model_name {
+    suggest_persist_for: "0 minutes"
     primary_key: yes
     type: string
     sql: ${TABLE}.model_name ;;
