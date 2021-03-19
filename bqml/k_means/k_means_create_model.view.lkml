@@ -2,12 +2,11 @@ view: k_means_create_model {
   label: "BQML 1 - Create or Replace Model"
 
   derived_table: {
-    # persist_for: "1 hour"
     persist_for: "1 second"
 
     create_process: {
 
-      sql_step: CREATE OR REPLACE MODEL looker_pdts.{% parameter name_your_model %}
+      sql_step: CREATE OR REPLACE MODEL looker_pdts.{% parameter workflow_parameters.model_name %}
                   OPTIONS(MODEL_TYPE = 'KMEANS'
                   {% if choose_number_of_clusters._parameter_value == 'auto' %}
                   {% else %}
@@ -34,7 +33,7 @@ view: k_means_create_model {
                 features,
                 created_at)
 
-                SELECT '{% parameter name_your_model %}' AS model_name,
+                SELECT '{% parameter workflow_parameters.model_name %}' AS model_name,
                   '{% parameter choose_number_of_clusters %}' AS number_of_clusters,
                   {% assign item_id = _filters['k_means_training_data.select_item_id'] | sql_quote | replace: '"','' | remove: "'" %}
                     '{{ item_id }}' AS item_id,
@@ -45,15 +44,6 @@ view: k_means_create_model {
     }
   }
 
-  parameter: name_your_model {
-    label: "Name Your BQML Model (required)"
-    description: "Enter a unique name for your BQML model"
-    type: unquoted
-    suggest_explore: bqml_k_means_model_info
-    suggest_dimension: bqml_k_means_model_info.model_name
-    suggest_persist_for: "0 minutes"
-  }
-
   parameter: choose_number_of_clusters {
     label: "Select Number of Clusters (optional)"
     description: "Enter the number of clusters you want to create"
@@ -61,28 +51,8 @@ view: k_means_create_model {
     default_value: "auto"
   }
 
-  # dimension: model_name {
-  #   type: string
-  #   sql: '{% parameter name_your_model %}' ;;
-  # }
-
-  # dimension: number_of_clusters {
-  #   type: string
-  #   sql: '{% parameter choose_number_of_clusters %}' ;;
-  # }
-
-  # dimension: item_id {
-  #   type: string
-  #   sql: '{{ item_id }}' ;;
-  # }
-
-  # dimension: features {
-  #   type: string
-  #   sql: '{{ features }}' ;;
-  # }
-
   dimension: status {
-    label: "Model Build Status (required)"
+    label: "Select to Start Building Model (required)"
     type: string
     sql: 'Model Created' ;;
   }

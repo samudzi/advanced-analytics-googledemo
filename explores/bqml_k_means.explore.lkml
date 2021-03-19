@@ -7,6 +7,15 @@ explore: bqml_k_means {
   label: "BQML K-Means Clustering"
   description: "Use this Explore to build a BQML K-means Clustering model"
 
+  always_filter: {
+    filters: [workflow_parameters.model_name: ""]
+  }
+
+  join: workflow_parameters {
+    sql: ;;
+  relationship: one_to_one
+  }
+
   join: k_means_training_data {
     sql: ;;
     relationship: one_to_one

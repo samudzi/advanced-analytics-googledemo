@@ -1,7 +1,7 @@
 view: k_means_centroids {
-  label: "BQML 3 - Run Predictions"
+  label: "BQML 4 - Cluster Centroid Info"
 
-  sql_table_name: ML.CENTROIDS(MODEL looker_pdts.{% parameter k_means_predict.model_name %}) ;;
+  sql_table_name: ML.CENTROIDS(MODEL looker_pdts.{% parameter workflow_parameters.model_name %}) ;;
 
   dimension: centroid_id {
     primary_key: yes

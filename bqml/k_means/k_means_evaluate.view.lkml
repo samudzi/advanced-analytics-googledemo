@@ -1,16 +1,16 @@
 view: k_means_evaluate {
-  label: "BQML 2 - Evaluate Model"
+  label: "BQML 2 - Model Evalution Info"
 
-  sql_table_name: ML.EVALUATE(MODEL looker_pdts.{% parameter model_name %}) ;;
+  sql_table_name: ML.EVALUATE(MODEL looker_pdts.{% parameter workflow_parameters.model_name %}) ;;
 
-  parameter: model_name {
-    label: "Select an Existing BQML Model"
-    description: "Which BQML model do you want to evaluate?"
-    type: unquoted
-    suggest_explore: bqml_k_means_model_info
-    suggest_dimension: bqml_k_means_model_info.model_name
-    suggest_persist_for: "0 minutes"
-    }
+  # parameter: model_name {
+  #   label: "Select an Existing BQML Model"
+  #   description: "Which BQML model do you want to evaluate?"
+  #   type: unquoted
+  #   suggest_explore: bqml_k_means_model_info
+  #   suggest_dimension: bqml_k_means_model_info.model_name
+  #   suggest_persist_for: "0 minutes"
+  #   }
 
   dimension: davies_bouldin_index {
     type: number
