@@ -30,6 +30,12 @@ view: k_means_centroids {
 view: centroid_categorical_value {
   label: "BQML 4 - Cluster Centroid Info: Categorical Value"
 
-  dimension: category { primary_key: yes }
-  dimension: value {}
+  dimension: category {
+    primary_key: yes
+    required_fields: [k_means_centroids.centroid_id, k_means_centroids.feature]
+  }
+
+  dimension: value {
+    required_fields: [k_means_centroids.centroid_id, k_means_centroids.feature]
+  }
 }
