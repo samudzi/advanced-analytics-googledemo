@@ -948,6 +948,7 @@ view: order_items {
         }
       }
       datagroup_trigger: ecommerce_etl
+      publish_as_db_view: yes
     }
 
     dimension: order_id {
