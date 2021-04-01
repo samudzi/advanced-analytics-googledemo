@@ -10,7 +10,7 @@ view: field_suggestions {
 
           SELECT 'user_order_facts' AS table_name, column_name
           FROM advanced-analytics-accelerator.looker_pdts.INFORMATION_SCHEMA.COLUMNS
-          WHERE table_name = 'LR_7L4VZ1613530346128_user_order_facts'
+          WHERE table_name = '7L_advanced_analytics_accelerator_user_order_facts'
     ;;
   }
 
