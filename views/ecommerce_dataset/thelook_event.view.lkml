@@ -1005,6 +1005,7 @@ view: order_items {
             GROUP BY user_id
           ;;
       datagroup_trigger: ecommerce_etl
+      publish_as_db_view: yes
     }
 
     dimension: user_id {
