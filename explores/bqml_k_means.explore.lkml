@@ -5,7 +5,7 @@ explore: bqml_k_means_order_items {
   extends: [order_items]
   view_name: order_items
   group_label: "Advanced Analytics with BQML"
-  label: "BQML K-Means Clustering: eCommerce"
+  label: "BQML K-Means: eCommerce"
   description: "Use this Explore to build, evaluate and operationalize a BQML K-means Clustering model entirely from the Looker Explore interface"
 
   persist_for: "0 minutes"
