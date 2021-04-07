@@ -25,6 +25,16 @@ view: k_means_centroids {
     type: string
     sql: ${TABLE}.categorical_value ;;
   }
+
+  dimension: feature_category {
+    type: string
+    sql: concat(${TABLE}.feature,case when ${centroid_categorical_value.category} is not null then concat(': ',${centroid_categorical_value.category}) else '' end)  ;;
+  }
+
+  dimension: value {
+    type: number
+    sql: coalesce(${numerical_value},${centroid_categorical_value.value})  ;;
+  }
 }
 
 view: centroid_categorical_value {

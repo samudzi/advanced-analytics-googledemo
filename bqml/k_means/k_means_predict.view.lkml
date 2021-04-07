@@ -26,4 +26,9 @@ view: k_means_predict {
   measure: count {
     type: count
   }
+
+  measure: percent_of_count_total {
+    type: percent_of_total
+    sql: ${count}  ;;
+  }
 }
