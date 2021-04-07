@@ -3,9 +3,11 @@ include: "/env/connections"
 include: "/env/datagroups"
 
 # define accessible explores
-include: "/explores/ecommerce_data.explore"
+include: "/explores/order_items.explore"
 include: "/explores/cdnow.explore"
 include: "/explores/ga.explore"
+include: "/explores/customer_segmentation.explore"
+
 
 #include relevant dashboards
 include: "/dashboards/clv_demo_1.dashboard"
