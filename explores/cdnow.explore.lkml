@@ -2,12 +2,12 @@ include: "/views/CDNow/*.view"
 
 explore: cdnow {
   view_label: "Advanced Analytics Accelerator"
-  label: "CDNow transactions"
+  label: "CDNow Transactions"
 }
 
 explore: cdnow_clvpred {
   view_label: "Advanced Analytics Accelerator"
-  label: "CDNow predictions"
+  label: "CDNow Predictions"
 
 
   join: cdnow {
