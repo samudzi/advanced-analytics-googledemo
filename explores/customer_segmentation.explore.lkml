@@ -8,6 +8,7 @@ include: "/datagroups/ecommerce_etl.datagroup"
 
 explore: customer_segmentation {
   label: "BQML K-Means: Customer Segmentation"
+  description: "Use this Explore to create BQML K-means Clustering models for customer segmentation analysis"
 
   persist_with: ecommerce_etl
 
