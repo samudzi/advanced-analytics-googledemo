@@ -1,6 +1,5 @@
 include: "/views/google_analytics/*.view"
-include: "/views/ecommerce_dataset/*.view"
-
+include: "/views/ecommerce_dataset/**/*.view"
 
 explore: ga_clusters {
   view_label: "Advanced Analytics Accelerator"
