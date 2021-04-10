@@ -1,4 +1,4 @@
-# include relevant bqml block files from remote project
+# include relevant bqml k-means block files from remote project
 include: "//bqml_k_means_block/explores/bqml_k_means.explore"
 include: "//bqml_k_means_block/use_case_refinements/customer_segmentation/*"
 
