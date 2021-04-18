@@ -1,10 +1,9 @@
 include: "/views/google_analytics/*.view"
-include: "/views/ecommerce_dataset/*.view"
-
+include: "/views/ecommerce_dataset/**/*.view"
 
 explore: ga_clusters {
   view_label: "Advanced Analytics Accelerator"
-  label: "GA predictions"
+  label: "GA Predictions"
 
   join: inventory_items {
     relationship: many_to_many

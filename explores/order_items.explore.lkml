@@ -1,9 +1,8 @@
-include: "/views/ecommerce_dataset/*.view"
-
+include: "/views/ecommerce_dataset/**/*.view"
 
 explore: order_items {
   group_label: "Advanced Analytics Accelerator"
-  label: "GA e-Commerce data"
+  label: "eCommerce Data"
 
 
   join: order_facts {

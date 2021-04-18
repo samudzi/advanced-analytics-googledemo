@@ -1,5 +1,6 @@
-include: "/explores/ecommerce_data.explore"
+include: "/explores/order_items.explore"
 include: "/bqml/k_means/*.view"
+include: "//bqml_k_means_block/views/*.view"
 
 explore: bqml_k_means_jt_test {
   extends: [order_items]
@@ -11,10 +12,10 @@ explore: bqml_k_means_jt_test {
   persist_for: "0 minutes"
 
   always_filter: {
-    filters: [workflow_parameters.select_model_name: ""]
+    filters: [model_name.select_model_name: ""]
   }
 
-  join: workflow_parameters {
+  join: model_name {
     sql: ;;
   relationship: one_to_one
 }
