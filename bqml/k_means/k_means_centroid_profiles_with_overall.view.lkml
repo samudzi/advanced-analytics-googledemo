@@ -9,7 +9,7 @@ view: k_means_centroid_profiles_with_overall {
 
         ,coalesce(k_means_centroids.numerical_value,centroid_categorical_value.value) as centroid_avg_value
 from
-ML.CENTROIDS(MODEL looker_pdts.age_source_revenue)  AS k_means_centroids
+ML.CENTROIDS(MODEL looker_pdts.{% parameter workflow_parameters.select_model_name %})  AS k_means_centroids
 LEFT JOIN UNNEST(k_means_centroids.categorical_value) as centroid_categorical_value
 )
 ,c1 as (select centroid_id
@@ -19,8 +19,8 @@ LEFT JOIN UNNEST(k_means_centroids.categorical_value) as centroid_categorical_va
   from (
   select centroid_id
          ,count(distinct user_id) as user_count
-  from ML.PREDICT(MODEL looker_pdts.age_source_revenue,
-                        TABLE looker_pdts.age_source_revenue_training_data
+  from ML.PREDICT(MODEL looker_pdts.{% parameter workflow_parameters.select_model_name %},
+                        TABLE looker_pdts.{% parameter workflow_parameters.select_model_name %}_training_data
                       )
   group by 1 ) c0
   )
