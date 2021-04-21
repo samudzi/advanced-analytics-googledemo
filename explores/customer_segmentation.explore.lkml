@@ -12,12 +12,26 @@ explore: customer_segmentation {
 
   persist_with: ecommerce_etl
 
-  extends: [order_items, bqml_k_means]
-  view_name: order_items
+  extends: [bqml_k_means]
+  view_name: users
+  fields: [ALL_FIELDS*, -order_items.gross_margin, -order_items.days_until_next_order]
+
+  join: order_items {
+    type: inner
+    sql_on: ${users.id} = ${order_items.user_id} ;;
+    relationship: one_to_many
+  }
+
+  join: user_order_facts {
+    view_label: "Users"
+    type: inner
+    sql_on: ${users.id} = ${user_order_facts.user_id} ;;
+    relationship: one_to_one
+  }
 
   join: k_means_predict {
-    type: left_outer
-    sql_on: ${k_means_predict.item_id} = ${users.id} ;;
+    type: full_outer
+    sql_on: ${users.id} = ${k_means_predict.item_id} ;;
     relationship: one_to_one
   }
 }
