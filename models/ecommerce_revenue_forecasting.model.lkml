@@ -18,6 +18,12 @@ explore: ecommerce_revenue_forecasting {
   extends: [bqml_arima]
   view_name: order_items
 
+  join: arima_explain_forecast {
+    type: full_outer
+    relationship: many_to_one
+    sql_on: ${order_items.created_date} = ${arima_explain_forecast.time_series_date} ;;
+  }
+
   join: order_facts {
     type: left_outer
     view_label: "Orders"
