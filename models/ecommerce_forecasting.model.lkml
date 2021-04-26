@@ -2,7 +2,7 @@ connection: "advanced_analytics_accelerator"
 
 # include relevant bqml k-means block files from imported project
 include: "//bqml_arima_block/explores/bqml_arima.explore"
-include: "//bqml_arima_block/use_case_refinements/ecommerce_revenue_forecasting/*"
+include: "//bqml_arima_block/use_case_refinements/ecommerce_forecasting/*"
 
 # # include relevant files from this project
 include: "/views/ecommerce_dataset/**/*.view"
@@ -10,7 +10,7 @@ include: "/datagroups/ecommerce_etl.datagroup"
 
 
 explore: ecommerce_revenue_forecasting {
-  label: "BQML ARIMA Plus: eCommerce Revenue Forecasting"
+  label: "BQML ARIMA Plus: eCommerce Forecasting"
   description: "Use this Explore to create BQML ARIMA Plus models to forecast various revenue metrics using Looker's eCommerce dataset"
 
   persist_with: ecommerce_etl
