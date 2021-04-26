@@ -7,7 +7,6 @@ connection: "advanced_analytics_accelerator"
 include: "/explores/order_items.explore"
 include: "/explores/cdnow.explore"
 include: "/explores/ga.explore"
-include: "/explores/customer_segmentation.explore"
 
 
 # include: "/explores/bqml_k_means.explore"
@@ -17,6 +16,7 @@ include: "/explores/customer_segmentation.explore"
 
 # include relevant datagroups
 include: "/datagroups/default.datagroup"
+include: "/datagroups/ecommerce_etl.datagroup"
 
 # include relevant dashboards
 include: "/dashboards/clv_demo_1.dashboard"

@@ -1,4 +1,5 @@
-include: "/models/advanced_analytics_accelerator.model"
+include: "/explores/order_items.explore"
+
 view: order_facts {
   derived_table: {
     explore_source: order_items {
