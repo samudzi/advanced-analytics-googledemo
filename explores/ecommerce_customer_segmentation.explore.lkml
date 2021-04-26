@@ -7,9 +7,9 @@ include: "/views/ecommerce_dataset/**/*.view"
 include: "/datagroups/ecommerce_etl.datagroup"
 
 
-explore: customer_segmentation {
-  label: "BQML K-Means: Customer Segmentation"
-  description: "Use this Explore to create BQML K-means Clustering models for customer segmentation analysis"
+explore: ecommerce_customer_segmentation {
+  label: "BQML K-Means: eCommerce Customer Segmentation"
+  description: "Use this Explore to create BQML K-means Clustering models for customer segmentation analysis using Looker's eCommerce dataset"
 
   persist_with: ecommerce_etl
 

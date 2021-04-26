@@ -7,7 +7,7 @@ connection: "advanced_analytics_accelerator"
 include: "/explores/order_items.explore"
 include: "/explores/cdnow.explore"
 include: "/explores/ga.explore"
-include: "/explores/customer_segmentation.explore"
+include: "/explores/ecommerce_customer_segmentation.explore"
 
 # include relevant datagroups
 include: "/datagroups/default.datagroup"
