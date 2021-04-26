@@ -1,3 +1,5 @@
+connection: "advanced_analytics_accelerator"
+
 # include relevant bqml k-means block files from imported project
 include: "//bqml_k_means_block/explores/bqml_k_means.explore"
 include: "//bqml_k_means_block/use_case_refinements/ecommerce_customer_segmentation/*"
@@ -5,7 +7,6 @@ include: "//bqml_k_means_block/use_case_refinements/ecommerce_customer_segmentat
 # include relevant files from this project
 include: "/views/ecommerce_dataset/**/*.view"
 include: "/datagroups/ecommerce_etl.datagroup"
-
 
 explore: ecommerce_customer_segmentation {
   label: "BQML K-Means: eCommerce Customer Segmentation"
@@ -60,4 +61,10 @@ explore: ecommerce_customer_segmentation {
     sql_on: ${order_items.order_id} = ${repeat_purchase_facts.order_id} ;;
     relationship: many_to_one
   }
+}
+
+# hide explores used by native derived tables
+
+explore: +order_items {
+  hidden: yes
 }

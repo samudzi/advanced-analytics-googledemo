@@ -63,3 +63,9 @@ explore: ecommerce_revenue_forecasting {
     relationship: many_to_one
   }
 }
+
+# hide explores used by native derived tables
+
+explore: +order_items {
+  hidden: yes
+}
