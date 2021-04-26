@@ -11,7 +11,7 @@ include: "/datagroups/ecommerce_etl.datagroup"
 
 explore: ecommerce_revenue_forecasting {
   label: "BQML ARIMA Plus: eCommerce Forecasting"
-  description: "Use this Explore to create BQML ARIMA Plus models to forecast various revenue metrics using Looker's eCommerce dataset"
+  description: "Use this Explore to create BQML ARIMA Plus models to forecast various metrics using Looker's eCommerce dataset"
 
   persist_with: ecommerce_etl
 
