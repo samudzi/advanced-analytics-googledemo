@@ -1,6 +1,6 @@
 # include relevant bqml k-means block files from imported project
 include: "//bqml_k_means_block/explores/bqml_k_means.explore"
-include: "//bqml_k_means_block/use_case_refinements/customer_segmentation/*"
+include: "//bqml_k_means_block/use_case_refinements/ecommerce_customer_segmentation/*"
 
 # include relevant files from this project
 include: "/views/ecommerce_dataset/**/*.view"
