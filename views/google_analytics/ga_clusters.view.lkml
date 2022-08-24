@@ -1,3 +1,4 @@
+
 view: ga_clusters {
   sql_table_name: `advanced-analytics-accelerator.GMP_demo.ga_clusters`
     ;;
